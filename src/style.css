@@ -27,7 +27,7 @@ button { cursor: pointer; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .topbar, .workspace, .footer { width: min(1120px, 100%); margin: auto; }
 .topbar { height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; border-bottom: 1px solid var(--line); }
-.brand { color: #f0f2ee; font-weight: 800; letter-spacing: .08em; text-decoration: none; }
+.brand { color: #f0f2ee; font-size: 1rem; font-weight: 400; letter-spacing: .08em; text-decoration: none; text-transform: lowercase; }
 .top-status { color: var(--dim); font-size: .72rem; }
 .pulse { color: var(--green); }
 .quick-button, .prompt-button, .palette-option { font: inherit; cursor: pointer; }
@@ -118,10 +118,10 @@ button { cursor: pointer; }
 }
 
 /* Transcript mode: content stays in the terminal flow instead of card grids. */
-.header { position: fixed; right: 0; bottom: 0; left: 0; z-index: 5; width: min(1000px, calc(100% - 48px)); height: 48px; margin: auto; padding: 0 30px; display: flex; align-items: center; gap: 22px; background: rgba(16, 19, 17, .98); border-top: 1px solid #1b211d; }
+.header { position: fixed; right: 0; bottom: 0; left: 0; z-index: 5; width: min(1000px, calc(100% - 48px)); height: 48px; margin: auto; padding: 0 30px; display: flex; align-items: center; gap: 22px; color: #737c74; background: rgba(16, 19, 17, .98); border-top: 1px solid #1b211d; font-size: 1rem; font-weight: 400; text-transform: lowercase; }
 .header-path { color: #737c74; font-size: .75rem; }
 .header-status { margin-left: auto; color: #6d786e; font-size: .7rem; }
-.terminal { width: min(1000px, calc(100% - 48px)); margin: auto; padding: 56px 50px 460px; }
+.terminal { width: min(1000px, calc(100% - 48px)); margin: auto; padding: 56px 50px 50dvh; }
 .transcript { margin: 0 0 28px; }
 .stream-line { max-width: 920px; margin: 17px 0; color: #8c968d; font-size: 1rem; white-space: pre-line; line-height: 1.55; }
 .stream-line:first-child { color: #aab5aa; }
@@ -168,7 +168,7 @@ button { cursor: pointer; }
   0% { content: '⠋'; } 10% { content: '⠙'; } 20% { content: '⠹'; } 30% { content: '⠸'; } 40% { content: '⠼'; } 50% { content: '⠴'; } 60% { content: '⠦'; } 70% { content: '⠧'; } 80% { content: '⠇'; } 90% { content: '⠏'; }
 }
 .markdown-content pre { width: 100%; margin: 28px 0; padding: 16px 0; overflow-x: auto; color: #d4ddd3; background: #17191a; border-left: 2px solid #687068; font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 1rem; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; }
-.markdown-content pre code { display: block; padding: 0 18px; color: inherit; font-family: inherit; font-size: 1rem; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; }
+.markdown-content pre code { display: block; padding: 0 18px; color: inherit; counter-reset: code-line; font-family: inherit; font-size: 1rem; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; }
 .markdown-content pre code .code-line { display: block; counter-increment: code-line; }
 .markdown-content pre code .code-line { font: inherit; }
 .markdown-content pre code .code-line::before { display: inline-block; width: 3ch; margin-right: 20px; color: #555d57; text-align: right; content: counter(code-line, decimal-leading-zero); user-select: none; }
@@ -176,10 +176,10 @@ button { cursor: pointer; }
 .markdown-item { margin: 13px 0; color: #c9d2c9; line-height: 1.55; }
 .markdown-item::first-letter { color: #a776d5; }
 .inline-code { padding: 1px 4px; color: #c3d58b; background: #252b26; font: inherit; font-size: 1rem; }
-.followup { position: fixed; right: 0; bottom: 48px; left: 0; display: block; width: min(920px, calc(100% - 80px)); max-height: min(42vh, 430px); overflow-y: auto; overscroll-behavior: contain; margin: 0 auto; padding: 18px 0 22px 40px; white-space: normal; background: #181b19; border-left: 3px solid #a776d5; z-index: 4; transition: max-height .35s ease, opacity .25s ease, transform .25s ease; }
-.followup.hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
+.followup { position: fixed; bottom: 48px; left: 50%; display: block; width: min(920px, calc(100% - 80px)); max-height: min(42dvh, 430px); overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 18px 0 22px 40px; white-space: normal; background: #181b19; border-left: 3px solid #a776d5; transform: translateX(-50%); z-index: 4; transition: max-height .35s ease, opacity .25s ease, transform .35s ease; }
+.followup.hidden { opacity: 0; pointer-events: none; transform: translate(-50%, 12px); }
 .followup.collapsed { max-height: 64px; overflow: hidden; }
-.followup-toggle { position: sticky; top: -18px; display: block; width: 100%; margin: 0 0 22px; padding: 0 0 10px; color: #e8eee8; background: #181b19; border: 0; font: inherit; font-size: 1.12rem; text-align: left; cursor: pointer; touch-action: none; }
+.followup-toggle { position: sticky; top: -18px; display: block; width: 100%; margin: 0 0 22px; padding: 0 0 10px; color: #e8eee8; background: #181b19; border: 0; font: inherit; font-size: 1rem; text-align: left; text-transform: lowercase; cursor: pointer; touch-action: none; }
 .option { display: grid; grid-template-columns: 4ch 1fr; width: 100%; padding: 3px 8px 3px 0; color: #e5e8e5; background: transparent; border: 0; font: inherit; text-align: left; }
 .option:hover, .option:focus-visible { color: #63a7ff; outline: none; }
 .option-number { color: #737c74; }
@@ -195,9 +195,9 @@ button { cursor: pointer; }
 @media (max-width: 680px) {
   .header { width: calc(100% - 32px); height: 48px; padding: 0 16px; }
   .header-path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .terminal { width: calc(100% - 32px); padding: 34px 18px 420px; }
+  .terminal { width: calc(100% - 32px); padding: 34px 18px 52dvh; }
   .ascii { max-width: 100%; font-size: .82rem; line-height: 1.35; overflow-x: hidden; }
-  .followup { bottom: 48px; width: calc(100% - 36px); padding: 16px 0 16px 18px; }
+  .followup { bottom: 48px; width: calc(100% - 36px); max-height: min(52dvh, 520px); padding: 16px 0 16px 18px; }
   .option-description { margin-left: 4ch; font-size: 1rem; }
   .menu-modal { padding: 22px 20px; }
 }
