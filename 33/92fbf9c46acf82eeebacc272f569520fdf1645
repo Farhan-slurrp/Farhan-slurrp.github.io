@@ -1,0 +1,66 @@
+src/content.yaml
+  s_549cc6e134e8b7::t_0631041942391d 8,12,17,25,34,38
+  h_542f8aaf5a548e 14,19,26
+  s_549cc6e134e8b7::t_10ea9d01b4ed12 35
+  s_549cc6e134e8b7::t_e5c1469476af1a 18
+  s_549cc6e134e8b7::t_a386116c1d4352 9,21-22,27-31
+  s_549cc6e134e8b7::t_7af81e83e0b5a9 20
+  s_549cc6e134e8b7::t_f3b9ee6dd32b29 5-7
+  s_549cc6e134e8b7::t_458825a30aa10c 10-11
+  s_549cc6e134e8b7::t_5505a42e022fd1 23-24
+  s_549cc6e134e8b7::t_d481084a630654 32-33
+  s_549cc6e134e8b7::t_6a0aa0ac2fa584 36-37
+  s_549cc6e134e8b7::t_0bc2e3608cbbf8 39
+.gitignore
+  s_549cc6e134e8b7::t_ba3936154be2d9 4-5
+  s_549cc6e134e8b7::t_82978c84ff646e 1-3
+  s_549cc6e134e8b7::t_f13dd3385935cd 6
+src/main.ts
+  s_549cc6e134e8b7::t_b7df75f4c781ca 108-114
+  s_549cc6e134e8b7::t_0631041942391d 3,87
+  s_549cc6e134e8b7::t_31496efe76a0a4 75,94,107,115-118,134,154
+  s_549cc6e134e8b7::t_ea1f87a6c69a92 80
+  s_549cc6e134e8b7::t_64b36620a17e9a 1-2
+  s_549cc6e134e8b7::t_6c9f3397a96815 4-6,72-74
+  s_549cc6e134e8b7::t_66f2cfa4016dbe 76-79
+  s_549cc6e134e8b7::t_1112e19f434a20 81-86
+  s_549cc6e134e8b7::t_4d2fa7493352d7 88-93
+  s_549cc6e134e8b7::t_70e1fb90afb3f2 95-97,104-106
+  s_549cc6e134e8b7::t_696de76ed0c990 119-121,131-133
+  s_549cc6e134e8b7::t_99953971e21570 135-137,151-153
+  s_549cc6e134e8b7::t_f73029f92e815a 155-157
+src/style.css
+  s_549cc6e134e8b7::t_a386116c1d4352 163,166
+  s_549cc6e134e8b7::t_c0a39f9ffd4407 30-122
+  s_549cc6e134e8b7::t_20f5faf95dc72a 164-165
+  s_549cc6e134e8b7::t_31496efe76a0a4 15,167-169,201
+  s_549cc6e134e8b7::t_b7df75f4c781ca 172-173
+  s_549cc6e134e8b7::t_8296bb9558d944 12-14
+  s_549cc6e134e8b7::t_b7f35f938ef29e 16-18,27-29
+  s_549cc6e134e8b7::t_2543c226d22cc1 123-125,160-162
+  s_549cc6e134e8b7::t_42e7e78c1d8b73 170-171
+  s_549cc6e134e8b7::t_abea367b7d11c5 174-176,198-200
+package-lock.json
+  s_549cc6e134e8b7::t_a61de4164dae39 1-2330
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "3392fbf9c46acf82eeebacc272f569520fdf1645",
+  "prompts": {},
+  "humans": {
+    "h_542f8aaf5a548e": {
+      "author": "Farhan Ahmad Nurzi <farhan.nurzi@glovoapp.com>"
+    }
+  },
+  "sessions": {
+    "s_549cc6e134e8b7": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f82b092cfffe30WS83dapXJNEz",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Farhan Ahmad Nurzi <farhan.nurzi@glovoapp.com>"
+    }
+  }
+}
