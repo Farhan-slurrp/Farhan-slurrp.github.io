@@ -17,7 +17,7 @@
 * { box-sizing: border-box; }
 * { scrollbar-width: none; }
 *::-webkit-scrollbar { display: none; }
-html { background: var(--bg); scroll-behavior: smooth; }
+html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bg); text-transform: lowercase; }
 body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .08; background: linear-gradient(transparent 50%, rgba(255, 255, 255, .025) 51%); background-size: 100% 4px; z-index: 10; }
 button, input { font: inherit; }
@@ -167,9 +167,9 @@ button { cursor: pointer; }
 @keyframes braille-loader {
   0% { content: '⠋'; } 10% { content: '⠙'; } 20% { content: '⠹'; } 30% { content: '⠸'; } 40% { content: '⠼'; } 50% { content: '⠴'; } 60% { content: '⠦'; } 70% { content: '⠧'; } 80% { content: '⠇'; } 90% { content: '⠏'; }
 }
-.markdown-content pre { width: 100%; margin: 28px 0; padding: 16px 0; overflow-x: auto; color: #d4ddd3; background: #17191a; border-left: 2px solid #687068; font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 1rem; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; }
+.markdown-content pre { width: 100%; margin: 28px 0; padding: 16px 0; overflow-x: auto; color: #d4ddd3; background: #17191a; border-left: 2px solid #687068; font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 16px; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; -webkit-text-size-adjust: 100%; }
 .markdown-content pre code { display: block; padding: 0 18px; color: inherit; counter-reset: code-line; font-family: inherit; font-size: 1rem; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; }
-.markdown-content pre code .code-line { display: block; counter-increment: code-line; width: max-content; min-width: 100%; font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 1rem !important; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; white-space: pre; }
+.markdown-content pre code .code-line { display: block; counter-increment: code-line; width: max-content; min-width: 100%; font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 16px !important; font-weight: 400; letter-spacing: normal; line-height: 1.65; text-transform: none; white-space: pre; -webkit-text-size-adjust: 100%; }
 .markdown-content pre code .code-line::before { display: inline-block; width: 3ch; margin-right: 20px; color: #555d57; text-align: right; content: counter(code-line, decimal-leading-zero); user-select: none; }
 .markdown-heading { margin: 26px 0 14px; color: #f0f2ee; font-size: 1.12rem; font-weight: 500; }
 .markdown-item { margin: 13px 0; color: #c9d2c9; line-height: 1.55; }
