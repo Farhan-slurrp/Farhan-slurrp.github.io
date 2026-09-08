@@ -23,12 +23,13 @@ sections:
   - id: stack
     description: tools and systems
     blocks:
-      - text: '### Languages\n`Golang` · `Java` · `Python` · `JavaScript` · `TypeScript`'
-      - text: '### Backend\n`Node.js` · `Express.js` · `NestJS` · `Django` · `FastAPI` · `Spring Boot` · `REST` · `gRPC`'
-      - text: '### Frontend\n`React.js` · `Next.js` · `React Native` · `Sass` · `TailwindCSS` · `Vue.js`'
+      - text: '### Languages\n`Golang` · `Java` · `Kotlin` · `Python` · `JavaScript` · `TypeScript`'
+      - text: '### Backend\n`Spring Boot` · `Node.js` · `Django` · `FastAPI` · `REST` · `gRPC`'
       - text: '### Data\n`MySQL` · `PostgreSQL` · `MongoDB` · `MS SQL` · `Redis` · `Snowflake`'
-      - text: '### Cloud & DevOps\n`AWS` · `Azure` · `GCP` · `Terraform` · `Docker` · `Kubernetes` · `CI/CD` · `GitHub Actions` · `GitLab CI` · `NGINX`'
+      - text: '### Cloud & DevOps\n`AWS` · `Azure` · `GCP` · `Terraform` · `Docker` · `Kubernetes` · `CI/CD` · `GitHub Actions` · `GitLab CI` · `NGINX` · `Grafana`'
+      - text: '### Frontend\n`React.js` · `Next.js` · `React Native` · `Sass` · `TailwindCSS` · `Vue.js`'
       - text: '### AI & Automation\n`LLM Evaluation` · `Pandas` · `NumPy` · `TensorFlow` · `OpenCV` · `Power Automate` · `Python RPA`'
+      - text: '### Practice\n`System Design` · `Testing` · `Reliability` · `Scalability` · `Automation` · `A/B Testing` · `KISS`'
   - id: principles
     description: my engineering defaults
     blocks:
@@ -36,4 +37,4 @@ sections:
   - id: contact
     description: how to get in touch
     blocks:
-      - text: '## Contact\n- [Email](mailto:farhanahmadnurzi@gmail.com)\n- [WhatsApp](tel:+601137447418)\n- [Phone](tel:+34617480728)\n- [GitHub](https://github.com/Farhan-slurrp)\n- [LinkedIn](https://linkedin.com/in/farhanahmadnurzi/)'
+      - text: '## Contact\n- [Email](mailto:farhanahmadnurzi@gmail.com)\n- [GitHub](https://github.com/Farhan-slurrp)\n- [LinkedIn](https://linkedin.com/in/farhanahmadnurzi/)'
