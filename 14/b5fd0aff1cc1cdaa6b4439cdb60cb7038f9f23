@@ -1,0 +1,29 @@
+src/main.ts
+  s_549cc6e134e8b7::t_d4017c7dfc6192 128,131-134,141-142,144
+  s_549cc6e134e8b7::t_2c29b1aff3a2cd 129-130,135,137-138,146
+  s_549cc6e134e8b7::t_eea7b59c7937b6 140
+  s_549cc6e134e8b7::t_ac60ad18461381 125-127,136,139,145,147,160-162
+  s_549cc6e134e8b7::t_62bc0a1f301240 143
+  s_549cc6e134e8b7::t_b23d546f93962c 163-164
+src/style.css
+  s_549cc6e134e8b7::t_eea7b59c7937b6 179
+  s_549cc6e134e8b7::t_c2cdf33c607147 157,160-161,171,178
+  s_549cc6e134e8b7::t_ac60ad18461381 181
+  s_549cc6e134e8b7::t_2c29b1aff3a2cd 182
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "14b5fd0aff1cc1cdaa6b4439cdb60cb7038f9f23",
+  "prompts": {},
+  "sessions": {
+    "s_549cc6e134e8b7": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f82b092cfffe30WS83dapXJNEz",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Farhan Ahmad Nurzi <farhan.nurzi@glovoapp.com>"
+    }
+  }
+}
