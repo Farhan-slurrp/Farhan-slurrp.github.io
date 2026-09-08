@@ -16,7 +16,7 @@ sections:
     description: where I have worked
     blocks:
       - text: '> ### Glovo · Software Engineer II\n> `Jul 2026 – Present`\n> - Backend for the Q-commerce team\n>\n> Cooking...'
-      - text: '### Multiverse Computing · Software Engineer\n`Nov 2025 – Present`\n- LLM evaluation pipelines with SageMaker HyperPod, SkyPilot, Kubernetes GPU clusters, and PyTorch jobs.\n- Model benchmarking and internal evaluation tooling for LLM and VLM models.'
+      - text: '### Multiverse Computing · Software Engineer\n`Jun 2026 – Present`\n- LLM evaluation pipelines with SageMaker HyperPod, SkyPilot, Kubernetes GPU clusters, and PyTorch jobs.\n- Model benchmarking and internal evaluation tooling for LLM and VLM models.'
       - text: '### GXBank · Software Engineer, Backend\n`Jul 2024 – Nov 2025`\n- Terraform governance, cloud security, and CI/CD improvements.\n- IVR self-unbinding, production GenAI chatbot flows, and automation.'
       - text: '### Deriv · Front-End Developer\n`Jan 2023 – May 2024`\n- React and TypeScript trading applications, bundle optimization, and tablet responsiveness.\n- P2P migration and Wallets re-architecture.'
       - text: '### Infront Consulting Group · Full Stack Developer\n`Jan 2022 – Dec 2022`\n- Django, Vue.js, React Native, Azure deployments, and UAT environments.\n- Database migration support and production fixes.'
@@ -29,7 +29,7 @@ sections:
       - text: '### Cloud & DevOps\n`AWS` · `Azure` · `GCP` · `Terraform` · `Docker` · `Kubernetes` · `CI/CD` · `GitHub Actions` · `GitLab CI` · `NGINX` · `Grafana`'
       - text: '### Frontend\n`React.js` · `Next.js` · `React Native` · `Sass` · `TailwindCSS` · `Vue.js`'
       - text: '### AI & Automation\n`LLM Evaluation` · `Pandas` · `NumPy` · `TensorFlow` · `OpenCV` · `Power Automate` · `Python RPA`'
-      - text: '### Practice\n`System Design` · `Testing` · `Reliability` · `Scalability` · `Automation` · `A/B Testing` · `KISS`'
+      - text: '### Practice\n`System Design` · `Testing` · `Reliability` · `Scalability` · `Automation` · `A/B Testing`'
   - id: principles
     description: my engineering defaults
     blocks:
