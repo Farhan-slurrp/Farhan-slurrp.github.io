@@ -122,7 +122,29 @@ function renderBlock(block: Block): HTMLElement {
 function followup(): HTMLElement {
   const block = el('section', 'followup');
   block.setAttribute('aria-label', 'Choose next section');
-  block.append(question('What should I show you next?'));
+  const toggle = el('button', 'followup-toggle', 'What should I show you next?');
+  toggle.type = 'button';
+  toggle.setAttribute('aria-expanded', 'true');
+  let swiped = false;
+  let startY = 0;
+  let dragging = false;
+  toggle.addEventListener('click', () => {
+    if (swiped) return;
+    setMenuCollapsed(block, !block.classList.contains('collapsed'));
+  });
+  toggle.addEventListener('pointerdown', (event) => { startY = event.clientY; dragging = true; toggle.setPointerCapture(event.pointerId); });
+  toggle.addEventListener('pointerup', (event) => {
+    if (!dragging) return;
+    dragging = false;
+    const distance = event.clientY - startY;
+    if (Math.abs(distance) > 80) {
+      swiped = true;
+      setMenuCollapsed(block, distance > 0);
+      window.setTimeout(() => { swiped = false; }, 350);
+    }
+  });
+  toggle.addEventListener('pointercancel', () => { dragging = false; });
+  block.append(toggle);
   sections.filter((section) => section !== activeSection).forEach((section, index) => {
     const row = el('div', 'choice-row');
     const option = el('button', 'option');
@@ -133,6 +155,11 @@ function followup(): HTMLElement {
     block.append(row);
   });
   return block;
+}
+
+function setMenuCollapsed(menu: HTMLElement, collapsed: boolean): void {
+  menu.classList.toggle('collapsed', collapsed);
+  menu.querySelector('.followup-toggle')?.setAttribute('aria-expanded', String(!collapsed));
 }
 
 function openMenu(): void {
