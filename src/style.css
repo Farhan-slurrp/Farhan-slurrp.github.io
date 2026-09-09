@@ -118,7 +118,7 @@ button { cursor: pointer; }
 }
 
 /* Transcript mode: content stays in the terminal flow instead of card grids. */
-.header { position: fixed; right: 0; bottom: 0; left: 0; z-index: 5; width: min(1000px, calc(100% - 48px)); height: 48px; margin: auto; padding: 0 30px; display: flex; align-items: center; gap: 22px; color: #737c74; background: rgba(16, 19, 17, .98); border-top: 1px solid #1b211d; font-size: 1rem; font-weight: 400; text-transform: lowercase; }
+.header { position: fixed; right: 0; bottom: 0; left: 0; z-index: 5; width: min(1000px, calc(100% - 48px)); height: 48px; margin: auto; padding: 0 50px; display: flex; align-items: center; gap: 22px; color: #737c74; background: rgba(16, 19, 17, .98); border-top: 1px solid #1b211d; font-size: 1rem; font-weight: 400; text-transform: lowercase; }
 .header-path { color: #737c74; font-size: .75rem; }
 .header-status { margin-left: auto; color: #6d786e; font-size: .7rem; }
 .terminal { width: min(1000px, calc(100% - 48px)); margin: auto; padding: 56px 50px 460px; }
@@ -143,6 +143,7 @@ button { cursor: pointer; }
 .section-status { margin-top: 34px; color: #737c74; font-size: 1rem; }
 .status-glyph { color: #a776d5; }
 .status-title { color: #f0f2ee; }
+.status-detail { color: #737c74; }
 .ascii { margin: 34px 0 30px; color: var(--green); font-size: clamp(.8rem, 2.2vw, 1.1rem); line-height: 1.35; letter-spacing: .04em; white-space: pre; }
 .home-title { margin: 0; color: #e8eee8; font-size: clamp(1.8rem, 5vw, 3.6rem); font-weight: 500; letter-spacing: -.08em; }
 .home-subtitle { max-width: 620px; margin: 16px 0 0; color: #8f9a91; font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.6; }

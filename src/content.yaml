@@ -1,19 +1,18 @@
-name: Farhan Ahmad Nurzi
-role: Software Engineer II
-company: Glovo
-intro: Backend and platform engineer working on services, infrastructure, and the systems around them.
 sections:
   - id: home
     description: start at the beginning
+    status: Home · backend · platform · product
     blocks:
       - text: '# Farhan Ahmad Nurzi\n\nBackend and platform engineer working on services, infrastructure, and the systems around them.'
   - id: about
     description: how I approach the work
+    status: About · backend · platform engineering
     blocks:
-      - text: 'I work on **backend systems**, platform engineering, and product engineering. At Glovo, my work covers Q-commerce.'
+      - text: 'I work on **backend systems**, platform engineering, and product engineering. At Glovo, my work covers Q-commerce domain.'
       - text: '```ts\nconst engineer = {\n  role: ["backend", "platform"],\n  focus: ["distributed systems", "reliability"],\n  languages: ["Golang", "Java", "Python", "TypeScript"],\n  cloud: ["AWS", "Azure", "GCP"],\n  ships: true,\n};\n```'
   - id: experience
     description: where I have worked
+    status: Experience · 4+ years · backend · AI · product
     blocks:
       - text: '> ### Glovo · Software Engineer II\n> `Jul 2026 – Present`\n> - Backend for the Q-commerce team\n>\n> Cooking...'
       - text: '### Multiverse Computing · Software Engineer\n`Nov 2025 – Jun 2026`\n- LLM evaluation pipelines with SageMaker HyperPod, SkyPilot, Kubernetes GPU clusters, and PyTorch jobs.\n- Model benchmarking and internal evaluation tooling for LLM and VLM models.'
@@ -22,6 +21,7 @@ sections:
       - text: '### Infront Consulting Group · Full Stack Developer\n`Jan 2022 – Dec 2022`\n- Django, Vue.js, React Native, Azure deployments, and UAT environments.\n- Database migration support and production fixes.'
   - id: stack
     description: tools and systems
+    status: Stack · working set · tools I use
     blocks:
       - text: '### Languages\n`Golang` · `Java` · `Kotlin` · `Python` · `JavaScript` · `TypeScript`'
       - text: '### Backend\n`Spring Boot` · `Node.js` · `Django` · `FastAPI` · `REST` · `gRPC`'
@@ -29,12 +29,14 @@ sections:
       - text: '### Cloud & DevOps\n`AWS` · `Azure` · `GCP` · `Terraform` · `Docker` · `Kubernetes` · `CI/CD` · `GitHub Actions` · `GitLab CI` · `NGINX` · `Grafana`'
       - text: '### Frontend\n`React.js` · `Next.js` · `React Native` · `Sass` · `TailwindCSS` · `Vue.js`'
       - text: '### AI & Automation\n`LLM Evaluation` · `Pandas` · `NumPy` · `TensorFlow` · `OpenCV` · `Power Automate` · `Python RPA`'
-      - text: '### Practice\n`System Design` · `Testing` · `Reliability` · `Scalability` · `Automation` · `A/B Testing`'
+      - text: '### Practice\n`System Design` · `Reliability` · `Scalability` · `Automation` · `A/B Testing`'
   - id: principles
     description: my engineering defaults
+    status: Principles · defaults · not dogma
     blocks:
       - text: '## Defaults\n\n- prefer boring solutions\n- keep the system understandable\n- measure before changing direction\n- ship -> observe -> iterate'
   - id: contact
     description: how to get in touch
+    status: Contact · links · online
     blocks:
       - text: '## Contact\n- [Email](mailto:farhanahmadnurzi@gmail.com)\n- [GitHub](https://github.com/Farhan-slurrp)\n- [LinkedIn](https://linkedin.com/in/farhanahmadnurzi/)'

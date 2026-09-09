@@ -1,21 +1,21 @@
 import source from './content.yaml?raw';
 
-export type Section = 'home' | 'about' | 'experience' | 'stack' | 'principles' | 'contact';
+export type Section = string;
 export type Block = { text?: string };
-type ConfigSection = { id: Section; description: string; blocks?: Block[] };
+type ConfigSection = { id: Section; description: string; status?: string; blocks?: Block[] };
 type Config = { name: string; role: string; company: string; intro: string; sections: ConfigSection[] };
 
 function parseConfig(text: string): Config {
-  const config = { name: '', role: '', company: '', intro: '', sections: [] } as Config;
+  const config: Config = { name: '', role: '', company: '', intro: '', sections: [] };
   let section: ConfigSection | undefined;
   let block: Block | undefined;
   text.split('\n').forEach((line) => {
-    const root = line.match(/^(name|role|company|intro):\s+(.+)$/);
-    if (root) config[root[1] as 'name' | 'role' | 'company' | 'intro'] = root[2];
     const sectionMatch = line.match(/^\s+- id:\s+(.+)$/);
     if (sectionMatch) { section = { id: sectionMatch[1] as Section, description: '' }; config.sections.push(section); block = undefined; }
     const description = line.match(/^\s+description:\s+(.+)$/);
     if (description && section) section.description = description[1];
+    const status = line.match(/^\s+status:\s+(.+)$/);
+    if (status && section) section.status = status[1];
     const blockMatch = line.match(/^\s{6}- (?:(type):\s+)?(.+)$/);
     if (blockMatch && section) {
       section.blocks ??= [];
@@ -31,3 +31,4 @@ function parseConfig(text: string): Config {
 export const profile = parseConfig(source);
 export const sections = profile.sections.map((section) => section.id);
 export const descriptions = Object.fromEntries(profile.sections.map((section) => [section.id, section.description])) as Record<Section, string>;
+export const statuses = Object.fromEntries(profile.sections.map((section) => [section.id, section.status ?? section.description])) as Record<Section, string>;

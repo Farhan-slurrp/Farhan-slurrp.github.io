@@ -1,6 +1,6 @@
 import './style.css';
 import { marked } from 'marked';
-import { descriptions, profile, sections, type Block, type Section } from './content';
+import { descriptions, profile, sections, statuses, type Block, type Section } from './content';
 
 const root = document.querySelector<HTMLDivElement>('#app') ?? document.body.appendChild(document.createElement('div'));
 root.id = 'app';
@@ -22,10 +22,7 @@ function render(section: Section): void {
 function shell(): void {
   root.replaceChildren();
   const header = el('header', 'header');
-  const brand = el('a', 'brand', 'FAN');
-  brand.href = '#home';
-  brand.addEventListener('click', (event) => { event.preventDefault(); render('home'); });
-  header.append(brand, el('span', 'header-path', '~/portfolio'));
+  header.append(el('span', 'header-path', '/Users/fan/portfolio'));
 
   const main = el('main', 'terminal');
   main.id = 'main-content';
@@ -87,7 +84,8 @@ function sectionView(section: Section): HTMLElement {
   if (section !== 'home') view.append(question(descriptions[section]));
   profile.sections.find((item) => item.id === section)?.blocks?.forEach((block) => view.append(renderBlock(block)));
   const status = el('p', 'section-status');
-  status.append(el('span', 'status-glyph', '▣'), document.createTextNode(' '), el('span', 'status-title', section[0].toUpperCase() + section.slice(1)), document.createTextNode(` · ${descriptions[section]}`));
+  const statusParts = statuses[section].split(' · ');
+  status.append(el('span', 'status-glyph', '▣'), document.createTextNode(' '), el('span', 'status-title', statusParts[0]), document.createTextNode(statusParts.length > 1 ? ' · ' : ''), el('span', 'status-detail', statusParts.slice(1).join(' · ')));
   view.append(status);
   Array.from(view.children).forEach((child, index) => {
     (child as HTMLElement).style.animationDelay = `${index * 0.14}s`;
