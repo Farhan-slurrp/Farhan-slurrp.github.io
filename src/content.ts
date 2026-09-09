@@ -3,10 +3,10 @@ import source from './content.yaml?raw';
 export type Section = string;
 export type Block = { text?: string };
 type ConfigSection = { id: Section; description: string; status?: string; blocks?: Block[] };
-type Config = { name: string; role: string; company: string; intro: string; sections: ConfigSection[] };
+type Config = { sections: ConfigSection[] };
 
 function parseConfig(text: string): Config {
-  const config: Config = { name: '', role: '', company: '', intro: '', sections: [] };
+  const config: Config = { sections: [] };
   let section: ConfigSection | undefined;
   let block: Block | undefined;
   text.split('\n').forEach((line) => {
