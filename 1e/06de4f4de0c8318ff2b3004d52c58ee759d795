@@ -1,0 +1,22 @@
+src/main.ts
+  s_549cc6e134e8b7::t_12363a549e7a28 52
+  s_549cc6e134e8b7::t_54cfe8e15457ca 49
+  s_549cc6e134e8b7::t_2be947c69c0ae3 59
+  s_549cc6e134e8b7::t_262256a2c3940f 47,53,57-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "1e06de4f4de0c8318ff2b3004d52c58ee759d795",
+  "prompts": {},
+  "sessions": {
+    "s_549cc6e134e8b7": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f82b092cfffe30WS83dapXJNEz",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Farhan Ahmad Nurzi <farhan.nurzi@glovoapp.com>"
+    }
+  }
+}
