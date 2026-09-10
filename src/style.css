@@ -19,7 +19,7 @@
 *::-webkit-scrollbar { display: none; }
 html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bg); text-transform: lowercase; }
-body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .08; background: linear-gradient(transparent 50%, rgba(255, 255, 255, .025) 51%); background-size: 100% 4px; z-index: 10; }
+body::before { display: none; }
 button, input { font: inherit; }
 button { cursor: pointer; }
 .skip-link { position: absolute; left: -999px; }
@@ -38,7 +38,7 @@ button { cursor: pointer; }
 .streaming-output > * { animation: type-in .32s both; }
 .streaming-output > :nth-child(2) { animation-delay: .08s; }
 .streaming-output > :nth-child(3) { animation-delay: .16s; }
-@keyframes type-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes type-in { from { opacity: 0; } to { opacity: 1; } }
 .panel { position: relative; padding: clamp(20px, 4vw, 42px); background: linear-gradient(135deg, rgba(255,255,255,.025), transparent), var(--panel); border: 1px solid var(--line); }
 .panel::after { content: ""; position: absolute; inset: 7px; pointer-events: none; border: 1px solid rgba(255, 255, 255, .04); }
 .full { grid-column: 1 / -1; }
@@ -121,7 +121,7 @@ button { cursor: pointer; }
 .header { position: fixed; right: 0; bottom: 0; left: 0; z-index: 5; width: min(1000px, calc(100% - 48px)); height: 48px; margin: auto; padding: 0 50px; display: flex; align-items: center; gap: 22px; color: #737c74; background: rgba(16, 19, 17, .98); border-top: 1px solid #1b211d; font-size: 1rem; font-weight: 400; text-transform: lowercase; }
 .header-path { color: #737c74; font-size: .75rem; }
 .header-status { margin-left: auto; color: #6d786e; font-size: .7rem; }
-.terminal { width: min(1000px, calc(100% - 48px)); margin: auto; padding: 56px 50px 460px; }
+.terminal { width: min(1000px, calc(100% - 48px)); margin: auto; padding: 56px 50px 100px; }
 .transcript { margin: 0 0 28px; }
 .stream-line { max-width: 920px; margin: 17px 0; color: #8c968d; font-size: 1rem; white-space: pre-line; line-height: 1.55; }
 .stream-line:first-child { color: #aab5aa; }
@@ -178,7 +178,9 @@ button { cursor: pointer; }
 .inline-code { padding: 1px 4px; color: #c3d58b; background: #252b26; font: inherit; font-size: 1rem; }
 .followup { position: fixed; bottom: 48px; left: 50%; display: block; width: min(920px, calc(100% - 80px)); max-height: min(42vh, 430px); overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 18px 0 22px 40px; white-space: normal; background: #181b19; border-left: 3px solid #a776d5; transform: translateX(-50%); z-index: 4; transition: max-height .35s ease, opacity .25s ease, transform .35s ease; }
 .followup.hidden { opacity: 0; pointer-events: none; transform: translate(-50%, 12px); }
-.followup.collapsed { max-height: 64px; overflow: hidden; }
+.followup.scroll-hidden { max-height: 51px; overflow: hidden; pointer-events: auto; transform: translateX(-50%); }
+.terminal:has(.followup:not(.hidden)) { padding-bottom: 460px; }
+.followup.collapsed { max-height: 51px; overflow: hidden; }
 .followup-toggle { position: sticky; top: -18px; display: block; width: 100%; margin: 0 0 22px; padding: 0 0 10px; color: #e8eee8; background: #181b19; border: 0; font: inherit; font-size: 1rem; text-align: left; text-transform: lowercase; cursor: pointer; touch-action: none; }
 .option { display: grid; grid-template-columns: 4ch 1fr; width: 100%; padding: 3px 8px 3px 0; color: #e5e8e5; background: transparent; border: 0; font: inherit; text-align: left; }
 .option:hover, .option:focus-visible { color: #63a7ff; outline: none; }
@@ -195,9 +197,11 @@ button { cursor: pointer; }
 @media (max-width: 680px) {
   .header { width: calc(100% - 32px); height: 48px; padding: 0 16px; }
   .header-path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .terminal { width: calc(100% - 32px); padding: 34px 18px 420px; }
+  .terminal { width: calc(100% - 32px); padding: 34px 18px 120px; }
   .ascii { max-width: 100%; font-size: .82rem; line-height: 1.35; overflow-x: hidden; }
   .followup { bottom: 48px; width: calc(100% - 36px); max-height: min(52vh, 520px); padding: 16px 0 16px 18px; }
+  .followup.collapsed { padding-bottom: 16px; }
+  .terminal:has(.followup:not(.hidden)) { padding-bottom: 420px; }
   .option-description { margin-left: 4ch; font-size: 1rem; }
   .menu-modal { padding: 22px 20px; }
 }

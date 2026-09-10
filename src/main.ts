@@ -5,6 +5,8 @@ import { descriptions, profile, sections, statuses, type Block, type Section } f
 const root = document.querySelector<HTMLDivElement>('#app') ?? document.body.appendChild(document.createElement('div'));
 root.id = 'app';
 let activeSection: Section = 'home';
+let autoScrolling = false;
+let showHomeOpened = false;
 
 function el<K extends keyof HTMLElementTagNameMap>(tag: K, className = '', text = ''): HTMLElementTagNameMap[K] {
   const node = document.createElement(tag);
@@ -15,6 +17,7 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, className = '', text 
 
 function render(section: Section): void {
   activeSection = section;
+  showHomeOpened = section === 'home';
   shell();
   history.replaceState(null, '', `#${section}`);
 }
@@ -41,6 +44,7 @@ function shell(): void {
     window.clearInterval(Number(thought.dataset.spinner));
     response.classList.remove('hidden');
     const responseLines = response.querySelectorAll('.stream-line').length + response.children.length;
+    streamPage(responseLines);
     window.setTimeout(() => {
       if (next.isConnected) {
         next.classList.remove('hidden');
@@ -74,7 +78,7 @@ function transcript(lines: string[]): HTMLElement {
 }
 
 function sectionIntro(section: Section): string[] {
-  if (section === 'home') return [];
+  if (section === 'home') return showHomeOpened ? ['→ Opened home'] : [];
   return [`→ Opened ${section}`];
 }
 
@@ -128,7 +132,8 @@ function followup(): HTMLElement {
   let dragging = false;
   toggle.addEventListener('click', () => {
     if (swiped) return;
-    setMenuCollapsed(block, !block.classList.contains('collapsed'));
+    const isClosed = block.classList.contains('collapsed') || block.classList.contains('scroll-hidden');
+    setMenuCollapsed(block, !isClosed);
   });
   toggle.addEventListener('pointerdown', (event) => { startY = event.clientY; dragging = true; toggle.setPointerCapture(event.pointerId); });
   toggle.addEventListener('pointerup', (event) => {
@@ -137,7 +142,7 @@ function followup(): HTMLElement {
     const distance = event.clientY - startY;
     if (Math.abs(distance) > 80) {
       swiped = true;
-      setMenuCollapsed(block, distance > 0);
+      window.setTimeout(() => setMenuCollapsed(block, distance > 0), 160);
       window.setTimeout(() => { swiped = false; }, 350);
     }
   });
@@ -157,7 +162,35 @@ function followup(): HTMLElement {
 
 function setMenuCollapsed(menu: HTMLElement, collapsed: boolean): void {
   menu.classList.toggle('collapsed', collapsed);
+  menu.classList.remove('scroll-hidden');
   menu.querySelector('.followup-toggle')?.setAttribute('aria-expanded', String(!collapsed));
+}
+
+function streamPage(lineCount: number): void {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+  autoScrolling = true;
+  const duration = Math.max(700, lineCount * 150 + 500);
+  const started = performance.now();
+  const timer = window.setInterval(() => {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    if (performance.now() - started >= duration) {
+      window.clearInterval(timer);
+      autoScrolling = false;
+      const menu = document.querySelector<HTMLElement>('.followup');
+      if (menu && !menu.classList.contains('collapsed')) {
+        menu.classList.remove('scroll-hidden');
+      }
+    }
+  }, 80);
+}
+
+function syncMenuVisibility(): void {
+  if (autoScrolling) return;
+  const menu = document.querySelector<HTMLElement>('.followup');
+  if (!menu || menu.classList.contains('collapsed') || menu.classList.contains('hidden')) return;
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 16;
+  menu.classList.toggle('scroll-hidden', !atBottom);
 }
 
 function openMenu(): void {
@@ -203,10 +236,12 @@ function addOutput(text: string): void {
 
 const hash = location.hash.slice(1) as Section;
 activeSection = sections.includes(hash) ? hash : 'home';
+showHomeOpened = hash === 'home';
 shell();
 document.addEventListener('keydown', (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openMenu(); }
   if (event.key === 'Escape') document.querySelector('.menu-backdrop')?.remove();
 });
+window.addEventListener('scroll', syncMenuVisibility, { passive: true });
 
 export { execute };
