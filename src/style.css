@@ -180,6 +180,7 @@ button { cursor: pointer; }
 .followup.hidden { opacity: 0; pointer-events: none; transform: translate(-50%, 12px); }
 .followup.scroll-hidden { max-height: 51px; overflow: hidden; pointer-events: auto; transform: translateX(-50%); }
 .terminal:has(.followup:not(.hidden)) { padding-bottom: 460px; }
+.terminal.menu-space { padding-bottom: 460px; }
 .followup.collapsed { max-height: 51px; overflow: hidden; }
 .followup-toggle { position: sticky; top: -18px; display: block; width: 100%; margin: 0 0 22px; padding: 0 0 10px; color: #e8eee8; background: #181b19; border: 0; font: inherit; font-size: 1rem; text-align: left; text-transform: lowercase; cursor: pointer; touch-action: none; }
 .option { display: grid; grid-template-columns: 4ch 1fr; width: 100%; padding: 3px 8px 3px 0; color: #e5e8e5; background: transparent; border: 0; font: inherit; text-align: left; }
@@ -202,6 +203,7 @@ button { cursor: pointer; }
   .followup { bottom: 48px; width: calc(100% - 36px); max-height: min(52vh, 520px); padding: 16px 0 16px 18px; }
   .followup.collapsed { padding-bottom: 16px; }
   .terminal:has(.followup:not(.hidden)) { padding-bottom: 420px; }
+  .terminal.menu-space { padding-bottom: 420px; }
   .option-description { margin-left: 4ch; font-size: 1rem; }
   .menu-modal { padding: 22px 20px; }
 }

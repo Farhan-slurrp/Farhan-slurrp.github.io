@@ -44,14 +44,15 @@ function shell(): void {
     window.clearInterval(Number(thought.dataset.spinner));
     response.classList.remove('hidden');
     const responseLines = response.querySelectorAll('.stream-line').length + response.children.length;
-    const finishStreaming = Math.max(500, responseLines * 80 + 300);
+    const finishStreaming = Math.max(500, responseLines * 150);
     window.setTimeout(() => {
-      if (next.isConnected) {
-        next.classList.remove('hidden');
-      }
+      main.classList.add('menu-space');
       autoScrolling = true;
       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
-      window.setTimeout(() => { autoScrolling = false; }, 800);
+      window.setTimeout(() => {
+        if (next.isConnected) next.classList.remove('hidden');
+        window.setTimeout(() => { autoScrolling = false; }, 800);
+      }, 200);
     }, finishStreaming);
   }, activeSection === 'home' ? 700 : 1050);
 }
