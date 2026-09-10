@@ -46,15 +46,12 @@ function shell(): void {
     const responseLines = response.querySelectorAll('.stream-line').length + response.children.length;
     const finishStreaming = Math.max(500, responseLines * 80 + 300);
     window.setTimeout(() => {
-      const needsAutoScroll = document.documentElement.scrollHeight > window.innerHeight + 80;
       if (next.isConnected) {
         next.classList.remove('hidden');
       }
-      if (needsAutoScroll) {
-        autoScrolling = true;
-        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
-      }
-      window.setTimeout(() => { autoScrolling = false; }, needsAutoScroll ? 800 : 0);
+      autoScrolling = true;
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+      window.setTimeout(() => { autoScrolling = false; }, 800);
     }, finishStreaming);
   }, activeSection === 'home' ? 700 : 1050);
 }
