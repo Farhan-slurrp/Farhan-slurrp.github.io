@@ -49,7 +49,9 @@ function shell(): void {
       if (next.isConnected) {
         next.classList.remove('hidden');
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: reducedMotion ? 'auto' : 'smooth' });
+        autoScrolling = true;
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+        window.setTimeout(() => { autoScrolling = false; }, reducedMotion ? 0 : 300);
       }
     }, Math.max(500, responseLines * 150));
   }, 1050);
@@ -172,8 +174,13 @@ function streamPage(lineCount: number): void {
   autoScrolling = true;
   const duration = Math.max(700, lineCount * 150 + 500);
   const started = performance.now();
+  let lastHeight = 0;
   const timer = window.setInterval(() => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    const height = document.documentElement.scrollHeight;
+    if (height !== lastHeight) {
+      lastHeight = height;
+      window.scrollTo({ top: height, behavior: 'auto' });
+    }
     if (performance.now() - started >= duration) {
       window.clearInterval(timer);
       autoScrolling = false;
