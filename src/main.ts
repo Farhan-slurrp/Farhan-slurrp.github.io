@@ -44,17 +44,19 @@ function shell(): void {
     window.clearInterval(Number(thought.dataset.spinner));
     response.classList.remove('hidden');
     const responseLines = response.querySelectorAll('.stream-line').length + response.children.length;
-    streamPage(responseLines);
+    const finishStreaming = Math.max(500, responseLines * 80 + 300);
     window.setTimeout(() => {
+      const needsAutoScroll = document.documentElement.scrollHeight > window.innerHeight + 80;
       if (next.isConnected) {
         next.classList.remove('hidden');
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+      if (needsAutoScroll) {
         autoScrolling = true;
         window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
-        window.setTimeout(() => { autoScrolling = false; }, reducedMotion ? 0 : 300);
       }
-    }, Math.max(500, responseLines * 150));
-  }, 1050);
+      window.setTimeout(() => { autoScrolling = false; }, needsAutoScroll ? 800 : 0);
+    }, finishStreaming);
+  }, activeSection === 'home' ? 700 : 1050);
 }
 
 function agentThought(section: Section): HTMLElement {
@@ -166,30 +168,6 @@ function setMenuCollapsed(menu: HTMLElement, collapsed: boolean): void {
   menu.classList.toggle('collapsed', collapsed);
   menu.classList.remove('scroll-hidden');
   menu.querySelector('.followup-toggle')?.setAttribute('aria-expanded', String(!collapsed));
-}
-
-function streamPage(lineCount: number): void {
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reducedMotion) return;
-  autoScrolling = true;
-  const duration = Math.max(700, lineCount * 150 + 500);
-  const started = performance.now();
-  let lastHeight = 0;
-  const timer = window.setInterval(() => {
-    const height = document.documentElement.scrollHeight;
-    if (height !== lastHeight) {
-      lastHeight = height;
-      window.scrollTo({ top: height, behavior: 'auto' });
-    }
-    if (performance.now() - started >= duration) {
-      window.clearInterval(timer);
-      autoScrolling = false;
-      const menu = document.querySelector<HTMLElement>('.followup');
-      if (menu && !menu.classList.contains('collapsed')) {
-        menu.classList.remove('scroll-hidden');
-      }
-    }
-  }, 80);
 }
 
 function syncMenuVisibility(): void {
