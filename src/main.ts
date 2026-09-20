@@ -62,7 +62,7 @@ function agentThought(section: Section): HTMLElement {
   const spinner = el('span', 'thinking-dots', '⠋');
   const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
   let frame = 0;
-  thought.append(spinner, document.createTextNode(` Thought: loading ${section}`));
+  thought.append(spinner, document.createTextNode(` Thinking: preparing ${section}`));
   thought.dataset.spinner = String(window.setInterval(() => {
     frame = (frame + 1) % frames.length;
     spinner.textContent = frames[frame];
